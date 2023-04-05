@@ -1,6 +1,6 @@
 <?php
-// $file_path = "gs://newbuckettestt1/employees.csv";
-$file_path = "project.csv";
+$file_path = "gs://asm1-s3880115-question1-bucket/project.csv";
+//$file_path = "project.csv";
 
 function searchrowCSV(){
     global $file_path;
@@ -58,7 +58,7 @@ function searchrowCSV(){
             }
             while(($row = fgetcsv($file,null,",")) != FALSE){
                 if($row[0] === $_SESSION['id']){
-                    echo "Deleted";
+                    echo "Result: Deleted <br>";
                 }else{
                     $data[] = $row;
                 }

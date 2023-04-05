@@ -58,6 +58,7 @@ session_start();
             <button form="update-form" type="submit">Submit Request</button>
 
         </form>
+        <hr>
     </main>
     <footer>
 
