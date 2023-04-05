@@ -12,35 +12,29 @@
 <body>
 
 <h2 align="center">Project Information</h2>
+<a class="btn" href="classes/add.php">Add</a>
 
 <div style="overflow-x:auto;">
   <table>
-    <!-- <tr>
-      <th>Project Name</th>
-      <th>Name</th>
-      <th>Subtype</th>
-      <th>Current Status</th>
-      <th>Capacity MW</th>
-      <th>Year of Completion</th>
-      <th>Country list of Sponsor/Developer</th>
-      <th>Sponsor/Developer Company</th>
-      <th>Country list of Lender/Financier</th>
-      <th>Lender/Financier Company</th>
-      <th>Country list of Construction/EPC</th>
-      <th>Construction Company/EPC Participant</th>
-      <th>Country</th>
-      <th>Province/State</th>
-      <th>District</th>
-      <th></th>
-    </tr> -->
   <?php
+    $no_rows = count(file("power.csv"));
+
+    if($no_rows > 1)
+    {
+        $no_rows = ($no_rows - 1) + 1;
+    }
     foreach($arrayData as $row){
   ?>
     <tr>
-
-      <td> <?= $row[0]; ?> </td>
+      <td> 
+        <?php 
+          include("classes/delete.php");
+          // include("classes/edit.php");
+        ?> 
+      </td>
       <td> <?= $row[1]; ?> </td>
       <td> <?= $row[2]; ?> </td>
+      <td> <?= $row[3]; ?> </td>
       <td> <?= $row[3]; ?> </td>
       <td> <?= $row[4]; ?> </td>
       <td> <?= $row[5]; ?> </td>
@@ -54,18 +48,10 @@
       <td> <?= $row[13]; ?> </td>
       <td> <?= $row[14]; ?> </td>
     </tr>
-    
-
   <?php
     }
   ?>
-        <td>
-        <button> <?php //include("classes/add.php"); ?> </button>
-        <button> <?php //include("classes/edit.php"); ?> </button>
-        <button> <?php //include("classes/delete.php"); ?> </button>
-      </td>
   </table>
 </div>
-
 </body>
 </html>
