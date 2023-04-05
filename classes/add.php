@@ -1,4 +1,20 @@
-<form action="add-process.php" method="POST" class="create-post" enctype="multipart/form-data">
+<?php
+include('crud.class.php');
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $crud = new Crud();
+    
+    $result = $crud->add_data($_POST);
+
+    if($result){
+        echo 'fail';
+    } else {
+        echo 'succeed';
+        // header("Location: ../?url=main");
+    }   
+}
+?>
+<form action="" method="POST" class="create-post" enctype="multipart/form-data">
     <label for="project-name" class="custom-project-name">Project Name</lable>
     <input id="project-name" type="text" name="project-name"><br>
 

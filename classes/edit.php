@@ -1,4 +1,19 @@
-<form method="post" enctype="multipart/form-data">
+<?php
+include('crud.class.php');
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+  $crud = new Crud();
+    
+  $result = $crud->edit_data($_POST);
+
+  if($result){
+      $_SESSION['message'] = $result;
+      echo 'Fail to Edit Record';
+  } else {
+      $_SESSION['message'] = 'Successfully Edit The Record';
+  }   
+}
+?>
+<form action="edit-process.php" method="POST" class="edit-post" enctype="multipart/form-data">
     <label for="project-name" class="custom-project-name">Project Name</lable>
     <input id="project-name" type="text" name="project-name"><br>
 
@@ -44,5 +59,9 @@
     <label for="district" class="custom-district">District</lable>
     <input id="district" type="text" name="district"><br>
 
-    <input type="submit" value="Save" class="save-button">
+    <label for="submit_form">
+        <input type="submit" value="Edit" type="text">
+    </label>
+  </div>
+
 </form>

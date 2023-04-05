@@ -1,0 +1,9 @@
+runtime: php55
+api_version: 1
+handlers:
+- url: /home
+  script: index.php
+- url: /update
+  script: update.php
+- url: /create
+  script: create.php

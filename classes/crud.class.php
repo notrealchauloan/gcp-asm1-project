@@ -66,7 +66,7 @@ class Crud{
         }
 
         $form_data = array(
-            // 'sr_no' => "id". $no_rows,
+            'sr_no' => "id". $no_rows,
             'projectname' => $projectname,
             'name' => $name,
             'subtype' => $subtype,
@@ -86,6 +86,53 @@ class Crud{
         $registration = implode(",", $form_data);
         fwrite($file_open, "\n{$registration}");
     }
+
+    public function edit_data($data){
+        $projectname = $data['project-name'];
+        $name = $data['name'];
+        $subtype = $data['subtype'];
+        $currentstatus = $data['current-status'];
+        $capacitymw = $data['capacity-mw'];
+        $yearofcompletion = $data['yearofcompletion'];
+        $countrylistsponsor = $data['countrylist-sponsor'];
+        $sponsor = $data['sponsor'];
+        $countrylistlender = $data['countrylistlender'];
+        $lender = $data['lender'];
+        $countrylistconstruction = $data['countrylistconstruction'];
+        $construction = $data['construction'];
+        $country = $data['country'];
+        $province = $data['province'];
+        $district = $data['district'];
+  
+        $file_open = fopen("../power-updated.csv", "a");
+        $no_rows = count(file("../power-updated.csv"));
+        if($no_rows > 1)
+        {
+            $no_rows = ($no_rows - 1) + 1;
+        }
+  
+        $form_data = array(
+            'sr_no' => $no_rows,
+            'projectname' => $projectname,
+            'name' => $name,
+            'subtype' => $subtype,
+            'currentstatus' => $currentstatus,
+            'capacitymw' => $capacitymw,
+            'yearofcompletion' => $yearofcompletion,
+            'countrylistsponsor' => $countrylistsponsor,
+            'sponsor' => $sponsor,
+            'countrylistlender' => $countrylistlender,
+            'lender' => $lender,
+            'countrylistconstruction' => $countrylistconstruction,
+            'construction' => $construction,
+            'country' => $country,
+            'province' => $province,
+            'district' => $district,
+        );
+        $registration = implode(",", $form_data);
+        fwrite($file_open, "{$registration}\n");
+        // header('Location: edit-process.php?id='.$no_rows);
+        }
 }
 
 ?>
